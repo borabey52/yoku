@@ -9,8 +9,11 @@ import re
 # ==========================================
 st.set_page_config(page_title="AI Sınav Asistanı v3.8", layout="wide")
 
-# API ANAHTARINI BURAYA YAPIŞTIR
-SABIT_API_KEY = "AIzaSyA7mNcnlQRLf2FjBPayc_GVztdzOoHnxt8"
+# DOĞRU OLAN (Yeni halin):
+import streamlit as st
+
+# Anahtarı Streamlit'in gizli kasasından çek
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 # Hafıza Ayarları
 if 'yuklenen_resimler_v3' not in st.session_state:
