@@ -9,11 +9,21 @@ import re
 # ==========================================
 st.set_page_config(page_title="AI Sınav Asistanı v3.8", layout="wide")
 
-# DOĞRU OLAN (Yeni halin):
-import streamlit as st
+# KODUNUN EN BAŞINDAKİ AYAR KISMI ŞÖYLE OLMALI:
 
-# Anahtarı Streamlit'in gizli kasasından çek
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+import streamlit as st
+import google.generativeai as genai
+import os
+
+# Anahtarı Streamlit'in gizli kasasından (secrets) çekip değişkene atıyoruz
+# Böylece aşağıda SABIT_API_KEY kullanan kodlar bozulmuyor.
+if "GOOGLE_API_KEY" in st.secrets:
+    SABIT_API_KEY = st.secrets["GOOGLE_API_KEY"]
+else:
+    SABIT_API_KEY = "" # Eğer anahtar yoksa boş kalsın, uygulama çökmesin
+
+# Gemini ayarını yapıyoruz
+genai.configure(api_key=SABIT_API_KEY)
 
 # Hafıza Ayarları
 if 'yuklenen_resimler_v3' not in st.session_state:
