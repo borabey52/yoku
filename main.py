@@ -159,7 +159,7 @@ if st.button("✅ KAĞIDI OKU VE DEĞERLENDİR",
         with st.spinner("Yapay zeka analiz yapıyor..."):
             try:
                 genai.configure(api_key=SABIT_API_KEY)
-                model = genai.GenerativeModel("gemini-1.5-flash")
+                model = genai.GenerativeModel("gemini-2.5-flash")
 
                 # --- GÜÇLÜ PROMPT ---
                 base_prompt = """
